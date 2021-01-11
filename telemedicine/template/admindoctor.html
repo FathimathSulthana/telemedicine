@@ -1,0 +1,79 @@
+{% extends 'adminbase.html' %}
+{% block content %}
+<style>
+    th,td{
+        padding: 10px;
+    }
+    th{
+        background-color: #4281f5;
+        color: white;
+    }
+    table{
+        border-radius: 5px;
+    }
+    </style>
+    <div style="margin: 50px;">
+        <h1 style="margin: 10px;">Doctor</h1>
+        <table border="1" style="margin-top: 50px;">
+            <tr>
+                <th>NAME</th>
+                <th>ADDRESS</th>
+                <th>DISTRICT</th>
+                <th>CONTACT</th>
+                <th>EMAIL</th>
+                <th>DEPARTMENT</th>
+                <th>PHOTO</th>
+                <th>QUALIFICATION</th>
+                <th>EXPERIENCE</th>
+            </tr>
+            {% for d in data %}
+            <tr>
+                
+                <td>{{d.1}}</td>
+                <td>{{d.2}}</td>
+                <td>{{d.9}}</td>
+                <td>{{d.3}}</td>
+                <td>{{d.4}}</td>
+                <td>{{d.10}}</td>
+                <td><img src="../static{{d.6}}" height="150px" width="150px"></td>
+                <td>{{d.7}}</td>
+                <td>{{d.8}}</td>
+                <td><a href="adminapproveuser?id={{d.4}}&status=1&url=admindoctor">Approve</a></td>
+                <td><a href="adminrejectuser?id={{d.4}}&status=-1&url=admindoctor">Reject</a></td>
+            </tr>
+            {% endfor %}
+        </table>
+        <table border="1" style="margin-top: 50px;">
+            <tr>
+                <th>NAME</th>
+                <th>ADDRESS</th>
+                <th>DISTRICT</th>
+                <th>CONTACT</th>
+                <th>EMAIL</th>
+                <th>DEPARTMENT</th>
+                <th>PHOTO</th>
+                <th>QUALIFICATION</th>
+                <th>EXPERIENCE</th>
+            </tr>
+            {% for d in data1 %}
+            <tr>
+                <td>{{d.1}}</td>
+                <td>{{d.2}}</td>
+                <td>{{d.9}}</td>
+                <td>{{d.3}}</td>
+                <td>{{d.4}}</td>
+                <td>{{d.10}}</td>
+                <td><img src="../static{{d.6}}" height="150px" width="150px"></td>
+                <td>{{d.7}}</td>
+                <td>{{d.8}}</td>
+                <td><a href="adminrejectuser?id={{d.4}}&status=-1&url=admindoctor">Reject</a></td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+    <script>
+        var msg="{{msg}}";
+        if(msg!="")
+            alert(msg)
+        </script>
+{% endblock %}

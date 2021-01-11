@@ -1,0 +1,67 @@
+{% extends 'doctorbase.html' %}
+{% block content %}
+<style>
+    th,td{
+        padding: 10px;
+    }
+    </style>
+    <div style="margin: 50px;">
+        <h1 style="margin: 10px;">Prescription</h1>
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <table>
+                
+                
+                <tr>
+                    <td>Medicine</td>
+                    <td><select name="medicine">
+                        {% for d in med %}
+                        <option value="{{d.0}}">{{d.1}}</option>
+                        {% endfor %}
+                    </select></td>
+                </tr>
+                <tr>
+                    <td>Course of medicine</td>
+                    <td><input type="text" name="txtCourse" ></td>
+                </tr>
+                <tr>
+                    <td>Quantity</td>
+                    <td><input type="number" name="txtQty"  ></td>
+                </tr>
+                <tr>
+                    <td><input type="submit" class="btn btn-primary" name="btnNext" value="Next"></td>
+                    <td><input type="submit" class="btn btn-primary" name="btnSubmit" value="Submit"></td>
+                </tr>
+               
+            </table>
+        </form>
+    </div>
+    
+        <script>
+    //     $(document).ready(function() {
+            
+    //         $("#btnNext").click(function () {
+    //             debugger;
+    //   var a=10;
+    //             $.ajax({
+    //                 dataType: "json",
+    //                 contentType: "application/json",
+    //                 url: "/next",
+    //                 type:'POST',
+    //             });
+    //         });  
+    //         $("#btnSubmit").click(function () {
+      
+    //             $.ajax({
+    //                 dataType: "json",
+    //                 contentType: "application/json",
+    //                 url: "/doctorpharmacy",
+    //                 type:'POST',
+    //             });
+    //         });   
+    //     });
+        var msg="{{msg}}";
+        if(msg!="")
+            alert(msg)
+        </script>
+{% endblock %}

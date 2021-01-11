@@ -1,0 +1,70 @@
+{% extends 'commonbase.html' %}
+{% block content %}
+<style>
+    th,td{
+        padding: 10px;
+    }
+    </style>
+    <div style="margin: 50px;">
+        <h1 style="margin: 10px;">Registration</h1>
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <table>
+                
+                <tr>
+                    <td>Name</td>
+                    <td><input type="text" class="form-control" name="txtName" required pattern="[a-zA-Z ]+"></td>
+                </tr>
+                <tr>
+                    <td>Address</td>
+                    <td><textarea name="txtAddress" class="form-control" required></textarea></td>
+                </tr>
+                <tr>
+                    <td>District</td>
+                    <td><select name="dist">
+                        <option>Thiruvananthapuram</option>
+                        <option>Kollam</option>
+                        <option>Pathanamthitta</option>
+                        <option>Alappuzha</option>
+                        <option>Idukki</option>
+                        <option>Kottayam</option>
+                        <option>Eranakulam</option>
+                        <option>Thrissur</option>
+                        <option>Palakkad</option>
+                        <option>Malappuram</option>
+                        <option>Kozhikode</option>
+                        <option>Kannur</option>
+                        <option>Wayanad</option>
+                        <option>Kasargod</option>
+                    </select></td>
+                </tr>
+                <tr>
+                    <td>Contact</td>
+                    <td><input type="text" class="form-control" name="txtContact" required pattern="[6789][0-9]{9}"></td>
+                </tr>
+                <tr>
+                    <td>Licence</td>
+                    <td><input type="text" class="form-control" name="licence" required></td>
+                </tr>
+                <tr>
+                    <td>Email</td>
+                    <td><input type="email" class="form-control" name="txtEmail" required></td>
+                </tr>
+               
+                <tr>
+                    <td>Password</td>
+                    <td><input type="password" class="form-control" name="txtPassword" required></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td><input type="submit" class="btn btn-primary" style="color: white;" value="Registration"></td>
+                </tr>
+            </table>
+        </form>
+    </div>
+    <script>
+        var msg="{{msg}}";
+        if(msg!="")
+            alert(msg)
+        </script>
+{% endblock %}

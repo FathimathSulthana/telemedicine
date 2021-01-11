@@ -1,0 +1,59 @@
+{% extends 'doctorbase.html' %}
+{% block content %}
+<style>
+    th,td{
+        padding: 10px;
+    }
+    </style>
+    <div style="margin: 50px;">
+        <h1 style="margin: 10px;">Profile</h1>
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <table>
+                {% for d in data %}
+                <tr>
+                    
+                    <td colspan="2"><img src="../static{{d.6}}" height="150px" width="150px"></td>
+                </tr>
+                <tr>
+                    <td>Name</td>
+                    <td><input type="text" class="form-control" name="txtName" value="{{d.1}}" required pattern="[a-zA-Z ]+"></td>
+                </tr>
+                <tr>
+                    <td>Address</td>
+                    <td><textarea name="txtAddress" class="form-control" required>{{d.2}}</textarea></td>
+                </tr>
+                <tr>
+                    <td>District</td>
+                    <td><input type="text" class="form-control" name="txtDistrict" value="{{d.9}}"></td>
+                </tr>
+                <tr>
+                    <td>Contact</td>
+                    <td><input type="text" class="form-control" name="txtContact" value="{{d.3}}" required pattern="[6789][0-9]{9}"></td>
+                </tr>
+                <tr>
+                    <td>Email</td>
+                    <td><input type="email" class="form-control" name="txtEmail" value="{{d.4}}" required></td>
+                </tr>
+                <tr>
+                    <td>Experience</td>
+                    <td><input type="text" class="form-control" name="txtExp" required value="{{d.8}}" ></td>
+                </tr>
+                <tr>
+                    <td>Qualification</td>
+                    <td><input type="text" class="form-control" name="txtQual" required value="{{d.7}}" ></td>
+                </tr>
+                {% endfor %}
+                <tr>
+                    <td></td>
+                    <td><input type="submit" class="btn btn-primary" style="color: white;" value="Update"></td>
+                </tr>
+            </table>
+        </form>
+    </div>
+    <script>
+        var msg="{{msg}}";
+        if(msg!="")
+            alert(msg)
+        </script>
+{% endblock %}

@@ -1,0 +1,68 @@
+{% extends 'adminbase.html' %}
+{% block content %}
+<style>
+    th,td{
+        padding: 10px;
+    }
+    th{
+        background-color: #4281f5;
+        color: white;
+    }
+    table{
+        border-radius: 5px;
+    }
+    </style>
+    <div style="margin: 50px;">
+        <h1 style="margin: 10px;">Pharmacy</h1>
+        <table border="1" style="margin-top: 50px;">
+            <tr>
+                <th>NAME</th>
+                <th>ADDRESS</th>
+                
+                <th>CONTACT</th>
+                <th>EMAIL</th>
+                <th>LICENSE</th>
+                <th colspan="3">DISTRICT</th>
+            </tr>
+            {% for d in data %}
+            <tr>
+                <td>{{d.1}}</td>
+                <td>{{d.2}}</td>
+                <td>{{d.3}}</td>
+                <td>{{d.4}}</td>
+                <td>{{d.5}}</td>
+                <td>{{d.6}}</td>
+                <td><a href="adminapproveuser?id={{d.4}}&status=1&url=adminpharmacy">Approve</a></td>
+                <td><a href="adminrejectuser?id={{d.4}}&status=-1&url=adminpharmacy">Reject</a></td>
+            </tr>
+            {% endfor %}
+        </table>
+        <table border="1" style="margin-top: 50px;">
+            <tr>
+                <th>NAME</th>
+                <th>ADDRESS</th>
+                
+                <th>CONTACT</th>
+                <th>EMAIL</th>
+                <th>LICENSE</th>
+                <th>DISTRICT</th>
+            </tr>
+            {% for d in data1 %}
+            <tr>
+                <td>{{d.1}}</td>
+                <td>{{d.2}}</td>
+                <td>{{d.3}}</td>
+                <td>{{d.4}}</td>
+                <td>{{d.5}}</td>
+                <td>{{d.6}}</td>
+               
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+    <script>
+        var msg="{{msg}}";
+        if(msg!="")
+            alert(msg)
+        </script>
+{% endblock %}

@@ -1,0 +1,56 @@
+{% extends 'pharmacybase.html' %}
+{% block content %}
+<style>
+    th,td{
+        padding: 10px;
+    }
+    th{
+        background-color: #4281f5;
+        color: white;
+    }
+    table{
+        border-radius: 5px;
+    }
+    </style>
+    <div style="margin: 50px;">
+        <h1 style="margin: 10px;">Medicine</h1>
+        <form method="POST">
+            {% csrf_token %}
+            <table>
+                <tr>
+                    <td>Select Medicine</td>
+                    <td><select name="medid">
+                        {% for d in med %}
+                        <option value="{{d.0}}">{{d.1}}</option>
+                        {% endfor %}
+                    </select></td>
+                </tr>
+                <tr>
+                    <td>Enter current stock</td>
+                    <td><input type="text" class="form-control" name="txtStock" required></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td><input type="submit" class="btn btn-primary" value="Submit"></td>
+                </tr>
+            </table>
+        </form>
+        <table border="1" style="margin-top: 50px;">
+            <tr>
+                <th>NAME</th>
+                <th>STOCK</th> 
+            </tr>
+            {% for d in data %}
+            <tr>
+                <td>{{d.0}}</td>
+                <td>{{d.1}}</td>   
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+    <script>
+        var msg="{{msg}}";
+        if(msg!="")
+            alert(msg)
+        </script>
+{% endblock %}

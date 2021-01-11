@@ -1,0 +1,70 @@
+{% extends 'doctorbase.html' %}
+{% block content %}
+<style>
+    th,td{
+        padding: 10px;
+    }
+    </style>
+    <div style="margin: 50px;">
+        <h1 style="margin: 10px;">Patient details</h1>
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <table>
+                {% for d in data %}
+                <tr>
+                    <td>Name</td>
+                    <td><input type="text" class="form-control" value="{{d.1}}" name="txtName" required pattern="[a-zA-Z ]+"></td>
+                </tr>
+                <tr>
+                    <td>Address</td>
+                    <td><textarea name="txtAddress" class="form-control" required>{{d.2}}</textarea></td>
+                </tr>
+                
+                <tr>
+                    <td>Contact</td>
+                    <td><input type="text" class="form-control" name="txtContact" value="{{d.4}}" required pattern="[6789][0-9]{9}"></td>
+                </tr>
+                <tr>
+                    <td>Pincode</td>
+                    <td><input type="text" class="form-control" name="txtPin" value="{{d.3}}" pattern="[6][0-9]{5}" required ></td>
+                </tr>
+                
+                <tr>
+                    <td>Email</td>
+                    <td><input type="email" class="form-control" name="txtEmail" value="{{d.5}}"  required></td>
+                </tr>
+               
+                <tr>
+                    <td>Allergy if any</td>
+                    <td><textarea name="txtAllergy" class="form-control" >{{d.6}}</textarea></td>
+                </tr>
+                <tr>
+                    <td>Heriditary disease if any</td>
+                    <td><textarea name="txtHeriditary" class="form-control" >{{d.7}}</textarea></td>
+                </tr>
+                <tr>
+                    <td>Surgery if any</td>
+                    <td><textarea name="txtSurgery" class="form-control" >{{d.8}}</textarea></td>
+                </tr>
+                <tr>
+                    <td>Have you been admited for a long, describe</td>
+                    <td><textarea name="txtAdmit" class="form-control" >{{d.9}}</textarea></td>
+                </tr>
+                <tr>
+                    <td>Other historical data</td>
+                    <td><textarea name="txtHistory" class="form-control" >{{d.10}}</textarea></td>
+                </tr>
+                {% endfor %}
+                <tr>
+                    <td></td>
+                    <td><input type="submit" class="btn btn-primary" style="color: white;" value="Add prescription"></td>
+                </tr>
+            </table>
+        </form>
+    </div>
+    <script>
+        var msg="{{msg}}";
+        if(msg!="")
+            alert(msg)
+        </script>
+{% endblock %}

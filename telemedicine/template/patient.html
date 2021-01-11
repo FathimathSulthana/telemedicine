@@ -1,0 +1,123 @@
+{% extends 'commonbase.html' %}
+{% block content %}
+<style>
+    th,td{
+        padding: 10px;
+    }
+    </style>
+    <div style="margin: 50px;">
+        <h1 style="margin: 10px;">Registrations</h1>
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <table>
+                
+                <tr>
+                    <td>Name</td>
+                    <td><input type="text" class="form-control" name="txtName" required pattern="[a-zA-Z ]+"></td>
+                </tr>
+                <tr>
+                    <td>Address</td>
+                    <td><textarea name="txtAddress" class="form-control" required></textarea></td>
+                </tr>
+                
+                <tr>
+                    <td>Contact</td>
+                    <td><input type="text" class="form-control" name="txtContact" required pattern="[6789][0-9]{9}"></td>
+                </tr>
+                <tr>
+                    <td>DOB</td>
+                    <td><input type="date" class="form-control" name="dob" required ></td>
+                </tr>
+                <tr>
+                    <td>Valid Id</td>
+                    <td><input type="text" class="form-control" name="idp" required ></td>
+                </tr>
+                <tr>
+                    <td>Gender</td>
+                    <td><input type="radio" name="gender" required value="male" >Male</td>
+                    <td><input type="radio"  name="gender" required value="female" >Female</td>
+                    <td><input type="radio"  name="gender" required value="other" >Other</td>
+                </tr>
+                <tr>
+                    <td>Pincode</td>
+                    <td><input type="text" class="form-control" name="txtPin" pattern="[6][0-9]{5}" required ></td>
+                </tr>
+                
+                <tr>
+                    <td>Email</td>
+                    <td><input type="email" class="form-control" name="txtEmail" required></td>
+                </tr>
+                <tr>
+                    <td>Password</td>
+                    <td><input type="password" class="form-control" name="txtPassword" required></td>
+                </tr>
+                <tr>
+                    <td>Allergy if any</td>
+                    <td><textarea name="txtAllergy" class="form-control" required></textarea></td>
+                </tr>
+                <tr>
+                    <td>Heriditary disease if any</td>
+                    <td><textarea name="txtHeriditary" class="form-control" required></textarea></td>
+                </tr>
+                <tr>
+                    <td>Surgery if any</td>
+                    <td><textarea name="txtSurgery" class="form-control" required></textarea></td>
+                </tr>
+                <tr>
+                    <td>Have you been admited for a long, describe</td>
+                    <td><textarea name="txtAdmit" class="form-control" required></textarea></td>
+                </tr>
+                <tr>
+                    <td>Other historical data</td>
+                    <td><textarea name="txtHistory" class="form-control" required></textarea></td>
+                </tr>
+                <tr>
+                    <td>Amount to be payed</td>
+                    <td><input type="text" class="form-control" name="pay" value="1000"></td>
+                </tr>
+                <tr>
+                   <td> <label for="cardNumber">Card Number</label> </td>
+                   <td><input type="text" class="form-control" name="cardno" maxlength="12">  </td> 
+                </tr>
+                <tr><td>
+                    <label>Expiration Date</label></td>
+                    <td><select class="form-control" name="month">
+                        <option value="01">January</option>
+                        <option value="02">February </option>
+                        <option value="03">March</option>
+                        <option value="04">April</option>
+                        <option value="05">May</option>
+                        <option value="06">June</option>
+                        <option value="07">July</option>
+                        <option value="08">August</option>
+                        <option value="09">September</option>
+                        <option value="10">October</option>
+                        <option value="11">November</option>
+                        <option value="12">December</option>
+                    </select></td>
+                    <td><select class="form-control" name="year">
+                        <option value="16"> 2021</option>
+                        <option value="17"> 2022</option>
+                        <option value="18"> 2023</option>
+                        <option value="19"> 2024</option>
+                        <option value="20"> 2025</option>
+                        <option value="21"> 2026</option>
+                    </select></td>
+                </tr>
+                <tr>
+                    <td> <label for="cvv">CVV</label> </td>
+                    <td><input type="text" class="form-control" name="cvv" maxlength="3">  </td> 
+                 </tr>
+                <tr>
+                    <td></td>
+                    <td><input type="submit" class="btn btn-primary" style="color: white;" value="Registration"></td>
+                </tr>
+            </table>
+        </form>
+    </div>
+    <script>
+        var msg="{{msg}}";
+        if(msg!="")
+            alert(msg)
+        </script>
+{% endblock %}

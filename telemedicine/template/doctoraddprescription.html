@@ -1,0 +1,36 @@
+{% extends 'doctorbase.html' %}
+{% block content %}
+<style>
+    th,td{
+        padding: 10px;
+    }
+    </style>
+    <div style="margin: 50px;">
+        <h1 style="margin: 10px;">Prescription</h1>
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <table>
+                
+                
+                <tr>
+                    <td>Diagnosis</td>
+                    <td><textarea name="txtDiagnosis" class="form-control" required></textarea></td>
+                </tr>
+                <tr>
+                    <td>Prescription</td>
+                    <td><textarea name="txtPrescription" class="form-control" required></textarea></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td><input type="submit" class="btn btn-primary" value="Add medicine"> </td>
+                </tr>
+               
+            </table>
+        </form>
+    </div>
+    <script>
+        var msg="{{msg}}";
+        if(msg!="")
+            alert(msg)
+        </script>
+{% endblock %}

@@ -1,0 +1,56 @@
+{% extends 'pharmacybase.html' %}
+{% block content %}
+<style>
+    th,td{
+        padding: 10px;
+    }
+    </style>
+    <div style="margin: 50px;">
+        <h1 style="margin: 10px 10px 10px 500px;">INVOICE</h1><hr>
+        <table style="margin-left: 350px;">
+            <tr>
+                <td>Name :</td>
+                <td>{{pname}}</td>
+                <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                <td>Date :</td>
+                <td>{{date}}</td>
+            </tr>
+        </table><hr>
+        <table border="1" style="margin-top: 50px; margin-left: 350px; width:500px;">
+            <tr>
+                <th>MEDICINE</th>
+                <th>RATE</th>
+                <th>QUANTITY</th>
+                <th>TOTAL</th>
+            </tr>
+            {% for d in data %}
+            <tr>
+                <td>{{d.0}}</td>
+                <td>{{d.1}}</td>
+                <td>{{d.2}}</td>
+                <td>{{d.3}}</td>
+            </tr>
+            {% endfor %}
+        </table>
+        <hr>
+        <table style="margin-left: 600px;">
+            <tr>
+                <td ><b>Total</b></td>
+                <td><b>{{total}}</b></td>
+            </tr>
+            <tr>
+                <td ><b>Consultation fees</b></td>
+                <td><b>{{fees}}</b></td>
+            </tr>
+        </table><br><br>
+        <form method="POST">
+            {% csrf_token %}
+        <input type="submit" class="btn btn-primary" style="margin-left: 500px; width: 150px;" name="btnProceed" value="Submit bill">
+    </form>
+    </div>
+    <script>
+        var msg="{{msg}}";
+        if(msg!="")
+            alert(msg)
+        </script>
+{% endblock %}

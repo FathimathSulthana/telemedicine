@@ -1,0 +1,43 @@
+{% extends 'courierbase.html' %}
+{% block content %}
+<style>
+    th,td{
+        padding: 10px;
+    }
+    </style>
+    <div style="margin: 50px;">
+        <h1 style="margin: 10px;">Order Status</h1>
+        <table border="1" style="margin-top: 50px;">
+            <tr>
+                
+            
+                <th>NAME</th>
+                <th>ADDRESS</th>
+                <th>CONTACT</th>
+                <th>PHARMACY NAME</th>
+                <th>PHARMACY ADDRESS</th>
+                <th>PHARMACY CONTACT</th>
+                <th>STATUS</th>
+                
+            </tr>
+            {% for d in data %}
+            <tr>
+
+                <td>{{d.1}}</td>
+                <td>{{d.2}}</td>
+                <td>{{d.3}}</td>
+                <td>{{d.4}}</td>
+                <td>{{d.5}}</td>
+                <td>{{d.6}}</td>
+                <td>{{d.7}}</td>
+                
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+    <script>
+        var msg="{{msg}}";
+        if(msg!="")
+            alert(msg)
+        </script>
+{% endblock %}

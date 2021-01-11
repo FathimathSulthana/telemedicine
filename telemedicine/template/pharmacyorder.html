@@ -1,0 +1,31 @@
+{% extends 'pharmacybase.html' %}
+{% block content %}
+<style>
+    th,td{
+        padding: 10px;
+    }
+    </style>
+    <div style="margin: 50px;">
+        <h1 style="margin: 10px;">Order</h1>
+        <table border="1" style="margin-top: 50px;">
+            <tr>
+                
+                <th>ORDER ID</th>
+                <th colspan="2">DOCTOR</th>
+                
+            </tr>
+            {% for d in data %}
+            <tr>
+                <td>{{d.0}}</td>
+                <td>{{d.1}}</td>
+                <td><a href="/pharmacyorderdetails?id={{d.0}}">View order details</a></td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+    <script>
+        var msg="{{msg}}";
+        if(msg!="")
+            alert(msg)
+        </script>
+{% endblock %}
