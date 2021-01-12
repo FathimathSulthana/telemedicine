@@ -6,7 +6,7 @@
     }
     </style>
     <div style="margin: 50px;">
-        <h1 style="margin: 10px;">Prescription</h1>
+        <h1 style="margin: 10px;">Consultation</h1>
         <form method="POST" enctype="multipart/form-data">
             {% csrf_token %}
             <table>
@@ -17,7 +17,7 @@
                     <td><textarea name="txtDiagnosis" class="form-control" required></textarea></td>
                 </tr>
                 <tr>
-                    <td>Prescription</td>
+                    <td>Consultation Details</td>
                     <td><textarea name="txtPrescription" class="form-control" required></textarea></td>
                 </tr>
                 <tr>
